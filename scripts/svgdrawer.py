@@ -17,7 +17,10 @@ STROKE_COLOR = (0, 0, 0, '%')
 
 def main():
     DEST_PATH.parent.mkdir(exist_ok=True, parents=True)
-    dwg = svgwrite.Drawing(str(DEST_PATH))
+
+    dwg = svgwrite.Drawing(str(DEST_PATH), size=(600, 400))
+
+    dwg.add(dwg.rect(insert=(0,0), size=(600,400), fill='white',))
 
     for state in csv.DictReader(SRC_GRID_PATH.open()):
         x = int(state['col'])
